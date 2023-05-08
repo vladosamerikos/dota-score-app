@@ -15,18 +15,21 @@ function PastMatches() {
     }, []);
 
   return (
-    <Paper style={{ maxHeight: '400px', maxWidth: '800px', overflow: 'auto' }}>
+    <>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-       Partidos Recientes
+      Partidos Recientes
       </Typography>
-      <List>
-        {pastMatches.map((match, index) => (
-          <ListItem button key={index}>
-            <MatchField data={match}/>
-          </ListItem>
-        ))}
-      </List>
-    </Paper>
+      <Paper style={{ maxHeight: '400px', maxWidth: '800px', overflow: 'auto' }}>
+
+        <List>
+          {pastMatches.map((match, index) => (
+            <ListItem button key={index}>
+              <MatchField data={match}/>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+    </>
   );
 }
 

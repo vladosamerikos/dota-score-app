@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css"; 
 
 function MatchField({key, data}) {
   const date = new Date(data.start_time * 1000);
@@ -8,15 +9,30 @@ function MatchField({key, data}) {
   const timeWithoutSeconds = time.slice(0, -3);
   console.log(data)
   return (
-    <>
-      <tr key={data.match_id}>
-        <td>{`${day}/${month}`}</td>
-        <td>{timeWithoutSeconds}</td>
-        <td>{data.radiant_name}  {data.radiant_score}</td>
-        <td>{data.dire_score}  {data.dire_name}</td>
-        <td>{data.league_name}</td>
-      </tr> 
-    </>
+    <div className="match-field" key={data.match_id}>
+      <div className="match-field-body">
+        <div className="match-field-radiant-team">
+          {data.radiant_name}
+        </div>
+
+        <div className="match-field-score">
+        {data.radiant_score}:{data.dire_score}
+        </div>
+        <div className="match-field-date">
+          <div className="match-field-date-day">{`${day}/${month}`}</div>
+          <div className="match-field-date-time">{timeWithoutSeconds}</div>
+        </div>
+        
+        <div className="match-field-dire-team">
+          {data.dire_name}
+        </div>
+      </div>
+      
+      <div className="match-field-footer">
+        {data.league_name}
+      </div>
+
+    </div>
   );
 }
 
