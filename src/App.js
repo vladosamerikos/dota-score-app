@@ -1,4 +1,3 @@
-import PastMatches from "./components/PastMatches";
 import "./App.css";
 
 function App() {
@@ -8,8 +7,7 @@ function App() {
       <header className="App-header">
         <h1>Consulta de Partidos de Dota 2</h1>
       </header>
-      <main>
-        <PastMatches />
+      <main>          
       </main>
     </div>
   );
