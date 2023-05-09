@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css';
+// import './custom.scss';
+import "./App.css"; 
+
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import MatchPage from "./pages/MatchPage";
 
 import NoPage from "./pages/NoPage";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css"; 
 
 function MatchField({key, data}) {
   const date = new Date(data.start_time * 1000);

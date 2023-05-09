@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { Paper, Typography, List, ListItem } from '@material-ui/core';
+
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+
 import MatchField from "./MatchField";
-import "../App.css"; 
 
 function PastMatches() {
     const [pastMatches, setPastMatches] = useState([]);
@@ -17,7 +20,7 @@ function PastMatches() {
 
   return (
     <>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
       Partidos Recientes
       </Typography>
       <Paper style={{ maxHeight: '400px', maxWidth: '800px', overflow: 'auto' }}>
@@ -30,7 +33,19 @@ function PastMatches() {
             </NavLink>
           ))}
         </List>
-      </Paper>
+      </Paper> */}
+      <Card style={{ maxHeight: '400px', maxWidth: '800px' }} className="container-md overflow-auto">
+      <Card.Header fixed="top">Partidos Recientes</Card.Header>
+        <ListGroup>
+          {pastMatches.map((match, index) => (
+            <NavLink to={`/match/${match.match_id}`} key={index}>
+              <ListGroup.Item>
+                <MatchField data={match}/>
+              </ListGroup.Item>
+            </NavLink>
+          ))}
+        </ListGroup>
+      </Card>
     </>
   );
 }
