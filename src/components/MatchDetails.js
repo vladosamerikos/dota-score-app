@@ -9,14 +9,11 @@ function MatchDetails({ matchData }) {
 	return (
 		<div>
 			<Card
-				style={{ maxHeight: '400px', maxWidth: '600px' }}
-				className='container-md p-0 mt-5'
+				className='container-sm p-0 mt-5'
 			>
-				<Card.Header className=' container-md bg-dark'>
+				<Card.Header className='bg-dark'>
 					<img
 						className='icon'
-						width={25}
-						height={25}
 						src={LeagueImage}
 						alt='Mi imagen SVG'
 					/>
@@ -25,8 +22,6 @@ function MatchDetails({ matchData }) {
 				<Card.Header className='bg-dark'>
 					<img
 						className='icon'
-						width={25}
-						height={25}
 						src={CubeImage}
 						alt='Mi imagen SVG'
 					/>
