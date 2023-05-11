@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { getMatchDetail } from "../api/dota.api";
 import { useParams } from "react-router-dom";
+import Loader from "../components/Loader"
 import MatchDetails from "../components/MatchDetails";
 
 const MatchPage = () => {
@@ -7,17 +9,16 @@ const MatchPage = () => {
     const [matchData, setMatchData] = useState(null);
   
     useEffect(() => {
-      // hacer la petición a la API de OpenDota usando el id del partido
-      fetch(`https://api.opendota.com/api/matches/${matchId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setMatchData(data);
-        });
+      async function loadDetails(matchId) {
+        const res =await getMatchDetail(matchId);
+        setMatchData(res.data)
+      }
+      loadDetails(matchId);
     }, [matchId]);
     console.log(matchData)
   
     if (!matchData) {
-      return <div>Cargando...</div>;
+      return <Loader />;
     }
 
     return <>

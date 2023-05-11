@@ -74,12 +74,54 @@
 /* Match field end */
 
 
+/* Custom card styles */
+
+.card {
+  border-radius: 2px !important;
+  border: #242628  1px solid !important;
+}
+
+.card-header{
+  border-radius: 0px !important;
+  color: white !important;
+}
+
+.card-title {
+  font-weight: bolder;
+  margin-left: 10px;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0.5rem;
+
+}
+.teams-data {
+  display: grid;
+  grid-template-columns: 1fr .5fr 1fr;
+  grid-gap: 10px;
+}
+
+.small-date{
+  font-size: 10px;
+}
+
+.game-score{
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.small-icon {
+width: 10px;
+height: 10px;
+}
 
 /* Global */
 a{
   text-decoration: none !important;
 }
-
 
 body
 {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { Paper, Typography, List, ListItem } from '@material-ui/core';
+import { getPastMatches } from "../api/dota.api";
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
@@ -11,32 +12,18 @@ function PastMatches() {
     const [pastMatches, setPastMatches] = useState([]);
 
     useEffect(() => {
-        fetch("https://api.opendota.com/api/proMatches")
-        .then((response) => response.json())
-        .then((data) => {
-            setPastMatches(data);
-        });
+        async function loadMatches() {
+          const res =await getPastMatches();
+          setPastMatches(res.data)
+        }
+        loadMatches();
     }, []);
 
   return (
     <>
-      {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-      Partidos Recientes
-      </Typography>
-      <Paper style={{ maxHeight: '400px', maxWidth: '800px', overflow: 'auto' }}>
-        <List>
-          {pastMatches.map((match, index) => (
-            <NavLink to={`/match/${match.match_id}`} key={index}>
-              <ListItem button >
-                <MatchField data={match}/>
-              </ListItem>
-            </NavLink>
-          ))}
-        </List>
-      </Paper> */}
-      <Card style={{ maxHeight: '400px', maxWidth: '800px' }} className="container-md overflow-auto">
-      <Card.Header fixed="top">Partidos Recientes</Card.Header>
-        <ListGroup>
+      <Card style={{ maxHeight: '400px', maxWidth: '600px' }} className="container-md ">
+      <Card.Header >Partidos Recientes</Card.Header>
+        <ListGroup className="overflow-auto">
           {pastMatches.map((match, index) => (
             <NavLink to={`/match/${match.match_id}`} key={index}>
               <ListGroup.Item>
