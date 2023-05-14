@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getMatchDetail } from "../api/dota.api";
+import { getMatchDetail } from "../../api/dota.api";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loader"
-import MatchDetails from "../components/MatchDetails";
+import Loader from "../../components/loaders/Loader"
+import MatchDetails from "../../components/MatchDetails";
+import FullWidthLayout from "hocs/layouts/FullWidthLayout";
 
 const MatchPage = () => {
     const { matchId } = useParams(); // obtener el id del partido de la URL
@@ -21,9 +22,9 @@ const MatchPage = () => {
       return <Loader />;
     }
 
-    return <>
+    return <FullWidthLayout>
         <MatchDetails matchData={matchData}/>
-    </>;
+    </FullWidthLayout>;
 };
   
 export default MatchPage;

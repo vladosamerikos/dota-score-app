@@ -25,7 +25,7 @@ function PastMatches() {
 		<>
 			<Card
 				style={{ maxHeight: '400px', maxWidth: '600px' }}
-				className='container-md p-0 mt-5 '
+				className='container-md p-0 mt-5 mb-5'
 			>
 				<Card.Header className='bg-dark'>
 					<img
@@ -38,7 +38,7 @@ function PastMatches() {
 				<ListGroup className='overflow-auto'>
 					{pastMatches.map((match, index) => (
 						<NavLink to={`/match/${match.match_id}`} key={index}>
-							<MatchField data={match} />
+							<MatchField data={match} key={index} />
 						</NavLink>
 					))}
 				</ListGroup>
