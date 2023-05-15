@@ -1,3 +1,4 @@
+import BlogCategories from "components/blog/BlogCategories"
 import BlogList from "components/blog/BlogList"
 import CategoryBlogList from "components/blog/CategoryBlogList"
 import FullWidthLayout from "hocs/layouts/FullWidthLayout"
@@ -24,6 +25,7 @@ function BlogCategory({
 
     return(
         <FullWidthLayout>
+            <BlogCategories/>
             <CategoryBlogList get_blog_list_page={get_blog_list_category_page} blog_list={blog_list} category_id={category_id}/>
         </FullWidthLayout>
         )

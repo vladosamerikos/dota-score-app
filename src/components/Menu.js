@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../logo.png'; 
+import React from 'react';
 function Menu() {
   return (
     <Navbar className="navbar-custom" bg="dark" variant="dark"  expand="md" sticky="top" >
@@ -22,7 +23,7 @@ function Menu() {
             <Nav.Link href="/">Principal</Nav.Link>
             <Nav.Link href="">Partidos</Nav.Link>
             <Nav.Link href="">Heroes</Nav.Link>
-            <Nav.Link href="">Patches</Nav.Link>
+            <Nav.Link href="/blog">Noticias</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
             <Nav.Link href="/">Login</Nav.Link>

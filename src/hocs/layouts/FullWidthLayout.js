@@ -1,5 +1,6 @@
 import Footer from "components/navigation/Footer"
 import Navbar from "components/navigation/Navbar"
+import Menu from "components/Menu"
 import React from "react"
 import { connect } from "react-redux"
 
@@ -7,7 +8,7 @@ import { connect } from "react-redux"
 const FullWidthLayout = ({children}) => {
     return(
         <>
-            <Navbar/>
+            <Menu/>
             {children}
             <Footer/>
         </>

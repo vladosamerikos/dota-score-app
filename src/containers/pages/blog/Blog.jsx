@@ -19,7 +19,6 @@ function Blog({
 
     return(
         <FullWidthLayout>
-            <Header/>
             <BlogCategories/>
             <BlogList get_blog_list_page={get_blog_list_page} blog_list={blog_list}/>
         </FullWidthLayout>

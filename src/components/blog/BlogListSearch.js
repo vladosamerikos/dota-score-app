@@ -3,6 +3,7 @@ import SmallSetPagination from "components/paginacion/SmallSetPagination"
 import { useEffect } from "react"
 import { connect } from "react-redux"
 import BlogCard from "./BlogCard"
+import React from "react"
 
 function BlogList({
     blog_list,

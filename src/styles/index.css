@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
+
+.btn-tag {
+  background-color: #eceff1;
+  text-transform: capitalize !important;
+  margin-bottom: 10px;
+  box-shadow: none;
+}
+.btn.btn-rounded { border-radius: 50px }
+
 
 
 /* Match field */
@@ -209,3 +217,7 @@
       0% { transform: rotate(6deg); }
       100% { transform: rotate(-6deg); }
   }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
