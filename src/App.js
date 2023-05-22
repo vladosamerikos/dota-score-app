@@ -9,6 +9,7 @@ import BlogCategory from 'containers/pages/blog/category/BlogCategory';
 import Search from 'containers/pages/Search';
 import React from 'react';
 import MatchPage from 'containers/pages/MatchPage';
+import AuthPage from 'containers/pages/AuthPage';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           <Route path="/search/:term" element={<Search/>}/>
 
           <Route path="/match/:matchId" element={<MatchPage/>} />
+
+          <Route path="/auth" element={<AuthPage/>}/>
+
 
         </Routes>
       </Router>

@@ -26,7 +26,7 @@ function Menu() {
             <Nav.Link href="/blog">Noticias</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link href="/">Login</Nav.Link>
+            <Nav.Link href="/auth">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
