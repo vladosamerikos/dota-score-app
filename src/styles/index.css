@@ -2,11 +2,15 @@
 
 .Auth-form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+.link-primary {
+  cursor: pointer;
+}
 .Auth-form {
   width: 420px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
@@ -136,6 +140,7 @@ label {
   }
   
   .card-header{
+    display: flex;
     border-radius: 0px !important;
     color: white !important;
   }

@@ -1,22 +1,26 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import logo from '../logo.png'; 
-import React from 'react';
+import React, { useState } from 'react';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import logo from '../logo.png';
+
 function Menu() {
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('accessToken') !== null);
+  const [userName, setUserName] = useState(sessionStorage.getItem('nickname') || '');
+
+  const handleLogout = () => {
+    // Lógica para limpiar la sesión
+    sessionStorage.clear();
+    setIsLoggedIn(false);
+    setUserName('');
+  };
+
+
   return (
-    <Navbar className="navbar-custom" bg="dark" variant="dark"  expand="md" sticky="top" >
-      <Container >
-      <Navbar.Brand  href="/">
-            <img
-              alt=""
-              src={logo}
-              width="50"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            Dota Score
-          </Navbar.Brand>
+    <Navbar className="navbar-custom" bg="dark" variant="dark" expand="md" sticky="top">
+      <Container>
+        <Navbar.Brand href="/">
+          <img alt="" src={logo} width="50" height="30" className="d-inline-block align-top" />{' '}
+          Dota Score
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
@@ -26,7 +30,13 @@ function Menu() {
             <Nav.Link href="/blog">Noticias</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link href="/auth">Login</Nav.Link>
+            {isLoggedIn ? (
+              <NavDropdown title={userName} id="collasible-nav-dropdown">
+                <NavDropdown.Item onClick={handleLogout}>Cerrar sesión</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Nav.Link href="/auth">Login</Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -32,7 +32,7 @@ class LoginView(APIView):
         if user is not None:
             login(request, user)
             auth_data = get_tokens_for_user(request.user)
-            return Response({'msg': 'Login Success', 'nickname': user.get_nickname(), **auth_data}, status=status.HTTP_200_OK)
+            return Response({'msg': 'Login Success', 'email': email, 'nickname': user.get_nickname(), **auth_data}, status=status.HTTP_200_OK)
         return Response({'msg': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 

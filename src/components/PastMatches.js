@@ -38,7 +38,7 @@ function PastMatches() {
 				<ListGroup className='overflow-auto'>
 					{pastMatches.map((match, index) => (
 						<NavLink to={`/match/${match.match_id}`} key={index}>
-							<MatchField data={match} key={index} />
+							<MatchField data={match}  />
 						</NavLink>
 					))}
 				</ListGroup>

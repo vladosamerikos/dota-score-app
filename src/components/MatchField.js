@@ -6,7 +6,6 @@ function MatchField({key, data}) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const time = date.toLocaleTimeString('es-ES', { hour12: false });
   const timeWithoutSeconds = time.slice(0, -3);
-  console.log(data)
   return (
     <div className="match-field" key={data.match_id}>
       <div className="match-field-body">
