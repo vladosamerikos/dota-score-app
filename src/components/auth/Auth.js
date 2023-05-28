@@ -1,71 +1,51 @@
 import React, { useState } from 'react';
-import { login, register } from '../../api/backend.api';
+import { login, register } from 'redux/actions/authActions';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// Resto del código del componente
 
-export default function AuthForm(props) {
+
+function AuthForm({ login, register, isAuthenticated, error }) {
+	const navigate = useNavigate();
 	const [authMode, setAuthMode] = useState('signin');
 	const [formData, setFormData] = useState({
-		email: '',
-		password: '',
-		nickname: '',
+	  email: '',
+	  password: '',
+	  nickname: '',
 	});
-	const [error, setError] = useState('');
-
+  
 	const showError = (message) => {
-		setError(message);
+	  // Handle error display logic
 	};
-
-	const changeAuthMode = () => {
-		setAuthMode(authMode === 'signin' ? 'signup' : 'signin');
+  
+	const switchAuthMode = () => {
+	  setAuthMode(authMode === 'signin' ? 'signup' : 'signin');
 	};
-
+  
 	const submitForm = async (e) => {
-		e.preventDefault();
-
-		try {
-			if (authMode === 'signin') {
-				const { email, password } = formData;
-				await login(email, password);
-
-				// Redireccionar a otra página
-				window.location.href = "/"; // Cambia la ruta a la página de destino
-			} else {
-				const { email, password, nickname } = formData;
-				const response = await register(email, password, nickname);
-
-				// Realizar auto login después del registro
-				// if (response.success) {
-				//   await login(email, password);
-				// }
-			}
-		} catch (error) {
-      if (error.response && error.response.data) {
-        const responseData = error.response.data;
-        let errorMessage = '';
-    
-        if (responseData.msg) {
-          errorMessage = responseData.msg;
-        } else if (responseData.email) {
-          errorMessage = responseData.email;
-        } else if (responseData.password) {
-          errorMessage = responseData.password;
-        } else if (responseData.nickname) {
-          errorMessage = responseData.nickname;
-        }
-    
-        showError(errorMessage);
-      } else {
-        console.log(error.response.data);
-      }
+	  e.preventDefault();
+  
+	  const { email, password, nickname } = formData;
+  
+	  try {
+		if (authMode === 'signin') {
+		  await login(email, password);
+		  navigate('/');
+		} else {
+		  await register(email, password, nickname);
+		  // No es necesario actualizar el estado de registro o redireccionar aquí
 		}
+	  } catch (error) {
+		showError(error.message);
+	  }
 	};
+	  
 
 	if (authMode === 'signin') {
 		return (
 			<div className='Auth-form-container'>
 				{error && (
-					<div className='container mb-5 d-flex justify-content-start'>
+					<div className='container  d-flex justify-content-start'>
 						<div
 							className='alert alert-danger alert-dismissible fade show'
 							role='alert'
@@ -87,7 +67,7 @@ export default function AuthForm(props) {
 							Todavía no estás registrado?{' '}
 							<span
 								className='link-primary'
-								onClick={changeAuthMode}
+								onClick={switchAuthMode}
 							>
 								Crear cuenta
 							</span>
@@ -156,7 +136,7 @@ export default function AuthForm(props) {
 					<h3 className='Auth-form-title'>Registrarse</h3>
 					<div className='text-center'>
 						¿Ya registrado?{' '}
-						<span className='link-primary' onClick={changeAuthMode}>
+						<span className='link-primary' onClick={switchAuthMode}>
 							Iniciar sesión
 						</span>
 					</div>
@@ -215,3 +195,16 @@ export default function AuthForm(props) {
 		</div>
 	);
 }
+
+const mapStateToProps = (state) => {
+	return {
+	  error: state.auth.error,
+	};
+  };
+  
+  const mapDispatchToProps = {
+	login,
+	register,
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);

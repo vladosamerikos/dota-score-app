@@ -1,4 +1,4 @@
-import LoadingCard from "components/loaders/LoadingCard"
+import Loader from "components/loaders/Loader"
 import SmallSetPagination from "components/paginacion/SmallSetPagination"
 import { useEffect } from "react"
 import { connect } from "react-redux"
@@ -38,7 +38,7 @@ function BlogList({
                 </div>
                 </>
                 :
-                <LoadingCard/>
+                <Loader/>
             }
         </div>
     )

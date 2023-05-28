@@ -7,7 +7,7 @@ function AuthPage({
 
     return(
         <FullWidthLayout>
-            <Auth/>
+            <Auth />
         </FullWidthLayout>
     )
 }

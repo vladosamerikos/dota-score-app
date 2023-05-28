@@ -1,6 +1,6 @@
 import React from "react";
 
-function MatchField({key, data}) {
+function MatchField({ data}) {
   const date = new Date(data.start_time * 1000);
   const day = date.getDate().toString().padStart(2, '0');
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -10,6 +10,11 @@ function MatchField({key, data}) {
     <div className="match-field" key={data.match_id}>
       <div className="match-field-body">
         <div className="match-field-radiant-team">
+        <img
+						className='team-logo'
+						src={data.radiant_logo}
+						alt='radiant logo'
+					/>
           {data.radiant_name}
         </div>
 
@@ -23,6 +28,11 @@ function MatchField({key, data}) {
         
         <div className="match-field-dire-team">
           {data.dire_name}
+          <img
+						className='team-logo'
+						src={data.dire_logo}
+						alt='dire logo'
+					/>
         </div>
       </div>
       

@@ -7,12 +7,10 @@ from django.contrib.auth.models import (
 )
 from django.utils import timezone
 
+def users_directory_path(instance, filename):
+    return 'users/{0}/{1}'.format(instance.nickname, filename)
 
 
-DISCOUNT_CODE_TYPES_CHOICES = [
-    ('percent', 'Percentage-based'),
-    ('value', 'Value-based'),
-]
 
 
 # Create your models here
@@ -57,6 +55,7 @@ class PortalUser(AbstractBaseUser):
     nickname = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    logo = models.ImageField(upload_to=users_directory_path, null=True)
     objects = PortalUserManager()
 
     USERNAME_FIELD = 'email'
@@ -78,6 +77,11 @@ class PortalUser(AbstractBaseUser):
     def get_nickname(self,):
         return self.nickname
     
+    def get_logo(self,):
+        if self.logo:
+            return self.logo.url
+        return ''
+
     @property
     def is_staff(self):
         "Is the user a member of staff?"

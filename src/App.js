@@ -2,7 +2,7 @@ import Error404 from 'containers/errors/Error404';
 import Home from 'containers/pages/Home';
 import store from './store';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Blog from 'containers/pages/blog/Blog';
 import BlogPost from 'containers/pages/blog/BlogPost';
 import BlogCategory from 'containers/pages/blog/category/BlogCategory';
@@ -11,33 +11,33 @@ import React from 'react';
 import MatchPage from 'containers/pages/MatchPage';
 import AuthPage from 'containers/pages/AuthPage';
 
-
 function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Routes>
-          {/* Error Display */}
-          <Route path="*" element={<Error404/>}/>
+	return (
+			<Provider store={store}>
+				<Router>
+					<Routes>
+						{/* Error Display */}
+						<Route path='*' element={<Error404 />} />
 
-          {/* Home Display */}
-          <Route path="/" element={<Home/>}/>
+						{/* Home Display */}
+						<Route path='/' element={<Home />} />
 
-          <Route path="/blog" element={<Blog/>}/>
-          <Route path="/blog/post/:slug" element={<BlogPost/>}/>
-          <Route path="/blog/categories/:category_id" element={<BlogCategory/>}/>
+						<Route path='/blog' element={<Blog />} />
+						<Route path='/blog/post/:slug' element={<BlogPost />} />
+						<Route
+							path='/blog/categories/:category_id'
+							element={<BlogCategory />}
+						/>
 
-          <Route path="/search/:term" element={<Search/>}/>
+						<Route path='/search/:term' element={<Search />} />
 
-          <Route path="/match/:matchId" element={<MatchPage/>} />
+						<Route path='/match/:matchId' element={<MatchPage />} />
 
-          <Route path="/auth" element={<AuthPage/>}/>
-
-
-        </Routes>
-      </Router>
-    </Provider>
-  );
+						<Route path='/auth' element={<AuthPage />} />
+					</Routes>
+				</Router>
+			</Provider>
+	);
 }
 
 export default App;

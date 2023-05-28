@@ -1,6 +1,5 @@
 import BlogCategories from "components/blog/BlogCategories";
 import BlogList from "components/blog/BlogList";
-import Header from "components/blog/Header";
 import FullWidthLayout from "hocs/layouts/FullWidthLayout";
 import React from "react";
 import { useEffect } from "react";

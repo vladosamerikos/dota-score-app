@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 78vh;
 }
 
 .link-primary {
@@ -206,6 +206,68 @@ label {
   margin-right: 5px;
   }
   
+  .match-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    grid-gap: 15px;
+  }
+  
+  .player-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    padding: 5px;
+  }
+  .small-text{
+    text-align: center;
+    font-size: 10px;
+  }
+  .radiant {
+    grid-column: 1; /* Jugadores de Radiant en la primera columna */
+  }
+  
+  .dire {
+    grid-column: 2; /* Jugadores de Dire en la segunda columna */
+  }
+  
+  .hero-icon{
+    width: 90%;
+    height: auto;
+  }
+  .radiant-players{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dire-players{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .result{
+    border-radius: 5px;
+    padding: 0 0.3rem;
+    width: 40px;
+    text-align: center;
+  }
+  .result-lose-text{
+    background-color: red ;
+    color: white;
+  
+  }
+  .result-win-text{
+    background-color: green;
+    color: white;
+  }
+  .team-name{
+    display: flex;
+    flex-direction: column;
+  }
+  .dire-result{
+    align-self: flex-end;
+  }
+
   /* Global */
   a{
     text-decoration: none !important;
