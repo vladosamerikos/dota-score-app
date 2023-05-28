@@ -18,7 +18,7 @@ function MatchDetails({ matchData }) {
 		return heroesData[heroId];
 	};
 	return (
-		<div>
+		<div style={{  height: "70vh"}}>
 			<Card className='container-sm p-0 mt-5 mb-5'>
 				<Card.Header className='bg-dark'>
 					<img className='icon' src={LeagueImage} alt='league icon' />
